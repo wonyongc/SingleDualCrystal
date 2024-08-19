@@ -18,22 +18,5 @@
 <!-- ====================================================================== -->
 
 
-  <detectors>
-    <detector id="EcalBarrel_ID" name="DRCrystal" type="DD4hep_DRCrystal" readout="DRCNoSegment" vis="Invisible">
-
-
- <comment>Electromagnetic Calorimeter Barrel</comment>
-
-<dimensions width="2*DRcrystalwidth" z_length="DRcrystallength+2*DRcrystalSipmwidth+1*cm" />
-
-
-<structure>
-       <slice material = "killMedia1" thickness = "DRcrystalSipmthick" depth="DRcrystalSipmwidth" sensitive="yes" limits="cal_limits" vis="CrystalEcalSensitiveVis"/>
-      <shape material = "E_PbWO4" thickness = "DRcrystallength" depth="DRcrystalwidth" sensitive="yes" limits="cal_limits" vis="CrystalEcalLayerVis"/>
-      <disk material = "killMedia2" thickness = "DRcrystalSipmthick" depth="DRcrystalSipmwidth" sensitive="yes" limits="cal_limits" vis="CrystalEcalSensitiveVis"/>
-</structure>
-
-    </detector>
-  </detectors>
 
 

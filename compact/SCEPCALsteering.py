@@ -3,7 +3,7 @@ from g4units import mm, GeV, MeV
 SIM = DD4hepSimulation()
 
 ## The compact XML file, or multiple compact files, if the last one is the closer.
-SIM.compactFile = []
+SIM.compactFile = ['compact/DRSingleCrystal.xml']
 ## Lorentz boost for the crossing angle, in radian!
 SIM.crossingAngleBoost = 0.0
 SIM.enableDetailedShowerMode = False
@@ -15,7 +15,7 @@ SIM.inputFiles = []
 ## Macro file to execute for runType 'run' or 'vis'
 SIM.macroFile = ""
 ## number of events to simulate, used in batch mode
-SIM.numberOfEvents = 0
+SIM.numberOfEvents = 1
 ## Outputfile from the simulation: .slcio, edm4hep.root and .root output files are supported
 SIM.outputFile = "dummyOutput.slcio"
 ## Physics list to use in simulation
@@ -143,8 +143,11 @@ SIM.field.stepper = "ClassicalRK4"
 
 
 ##  list of filter objects: map between name and parameter dictionary 
-SIM.filter.filters = {'geantino': {'name': 'GeantinoRejectFilter/GeantinoRejector', 'parameter': {}}, 'edep1kev': {'name': 'EnergyDepositMinimumCut', 'parameter': {'Cut': 0.001}}, 'edep0': {'name': 'EnergyDepositMinimumCut/Cut0', 'parameter': {'Cut': 0.0}}, 'wvnm': {'name': 'WavelengthMinimumCut', 'parameter': {'Cut': 200.}},
-'wvwind': {'name': 'WavelengthnmwindCut', 'parameter': {'Cut': 990.}}
+SIM.filter.filters = {'geantino': {'name': 'GeantinoRejectFilter/GeantinoRejector', 'parameter': {}},
+                      'edep1kev': {'name': 'EnergyDepositMinimumCut', 'parameter': {'Cut': 0.001}},
+                      'edep0': {'name': 'EnergyDepositMinimumCut/Cut0', 'parameter': {'Cut': 0.0}},
+                      'wvnm': {'name': 'WavelengthMinimumCut', 'parameter': {'Cut': 200.}},
+                      'wvwind': {'name': 'WavelengthnmwindCut', 'parameter': {'Cut': 990.}}
 }
 
 
@@ -413,7 +416,9 @@ SIM.physics.rangecut = None
 ## 
 ##     Quarks, gluons and W's Z's etc should not be treated by Geant4
 ##     
-SIM.physics.rejectPDGs = {1, 2, 3, 4, 5, 6, 3201, 3203, 4101, 4103, 21, 23, 24, 5401, 25, 2203, 5403, 3101, 3103, 4403, 2101, 5301, 2103, 5303, 4301, 1103, 4303, 5201, 5203, 3303, 4201, 4203, 5101, 5103, 5503}
+SIM.physics.rejectPDGs = {1, 2, 3, 4, 5, 6, 3201, 3203, 4101, 4103, 21, 23, 24, 5401, 25, 
+                          2203, 5403, 3101, 3103, 4403, 2101, 5301, 2103, 5303, 4301, 1103, 
+                          4303, 5201, 5203, 3303, 4201, 4203, 5101, 5103, 5503}
 
 ## Set of PDG IDs for particles that should not be passed to Geant4 if their properTime is 0.
 ## 

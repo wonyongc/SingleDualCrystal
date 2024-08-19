@@ -17,7 +17,14 @@ echo "ran thisdd4hep"
 #
 
 
-ddsim --steeringFile /home/eno/CalVision/dd4hep/DD4hep/examples/SingleDualCrystal/compact/SCEPCALsteering.py --compact /home/eno/CalVision/dd4hep/DD4hep/examples/SingleDualCrystal/compact/DRSingleCrystal.xml --runType batch --part.userParticleHandler='' -G --gun.position="0.,10.,0." --gun.direction "0 -1 0" --gun.energy "1*GeV" --gun.particle="mu-" --gun.distribution=uniform -N 50 -O out.root >& haha.log
+ddsim --steeringFile /home/eno/CalVision/dd4hep/DD4hep/examples/SingleDualCrystal/compact/SCEPCALsteering.py 
+--compact /home/eno/CalVision/dd4hep/DD4hep/examples/SingleDualCrystal/compact/DRSingleCrystal.xml 
+--runType batch 
+--part.userParticleHandler=''
+ -G --gun.position="0.,10.,0." --gun.direction "0 -1 0" --gun.energy "1*GeV" --gun.particle="mu-" --gun.distribution=uniform 
+ -N 50 
+ -O out.root 
+ >& haha.log
 
 exitcode=$?
 

@@ -1,15 +1,3 @@
-//==========================================================================
-//  AIDA Detector description implementation 
-//--------------------------------------------------------------------------
-// Copyright (C) Organisation europeenne pour la Recherche nucleaire (CERN)
-// All rights reserved.
-//
-// For the licensing terms see $DD4hepINSTALL/LICENSE.
-// For the list of contributors see $DD4hepINSTALL/doc/CREDITS.
-//
-// Author     : M.Frank
-//
-//==========================================================================
 #ifndef EXAMPLES_SingleDualCrystal_SRC_DualCrystalCalorimeterHIT_H
 #define EXAMPLES_SingleDualCrystal_SRC_DualCrystalCalorimeterHIT_H
 
@@ -21,7 +9,6 @@
 
 typedef ROOT::Math::XYZVector Position;
 typedef ROOT::Math::XYZVector Direction;
-
 
 
 namespace CalVision {
@@ -73,26 +60,32 @@ namespace CalVision {
   public:
     /// Default constructor
     DualCrystalCalorimeterHit() = default;
+    
     /// Initializing constructor
-  DualCrystalCalorimeterHit(const Position& cell_pos):dd4hep::sim::Geant4Calorimeter::Hit(cell_pos),ncerenkov(0),nscintillator(0) {
+    DualCrystalCalorimeterHit(const Position& cell_pos):dd4hep::sim::Geant4Calorimeter::Hit(cell_pos),ncerenkov(0),nscintillator(0) {
 
-      for( int i=0;i<finenbin;i++){
-	ncerwave[i]=0;
-	nscintwave[i]=0;
-	ncertime[i]=0;
-	nscinttime[i]=0;
-      }
-      for( int i=0;i<coarsenbin;i++ ) {
-	for( int j=0;j<coarsenbin;j++ ) {
-	  cerhitpos[i][j]=0;
-	  scinthitpos[i][j]=0;
-	} 
+      for( int i=0; i<finenbin; i++) {
+
+        ncerwave[i]=0;
+        nscintwave[i]=0;
+        ncertime[i]=0;
+        nscinttime[i]=0;
       }
 
-}
+      for( int i=0; i<coarsenbin; i++ ) {
+  
+        for( int j=0; j<coarsenbin; j++ ) {
+  
+          cerhitpos[i][j]=0;
+          scinthitpos[i][j]=0;
+  
+        } 
+      }
+    }
 
     /// Default destructor
     virtual ~DualCrystalCalorimeterHit() = default;
+
     /// Assignment operator
     //DualCrystalCalorimeterHit& operator=(const DualCrystalCalorimeterHit& c);
   };
@@ -111,7 +104,9 @@ namespace CalVision {
   public:
     /// Standalone function to dump data from a root file
     static int DualCrystalCalorimeterdumpData(int num_evts, const char* file_name);
+
   };
+
 }
 
 // CINT configuration

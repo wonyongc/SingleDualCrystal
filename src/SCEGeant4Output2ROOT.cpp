@@ -194,9 +194,9 @@ void SCEGeant4Output2ROOT::saveEvent(OutputContext<G4Event>& /* ctxt */) {
       vector<void*> particles;
       particles.reserve(pm.size());
       for ( const auto& i : pm )   {
-	auto* p = i.second;
-	G4ParticleDefinition* def = table->FindParticle(p->pdgID);
-	p->charge = int(3.0 * (def ? def->GetPDGCharge() : -1.0)); // Assume e-/pi-
+	      auto* p = i.second;
+	      G4ParticleDefinition* def = table->FindParticle(p->pdgID);
+	      p->charge = int(3.0 * (def ? def->GetPDGCharge() : -1.0)); // Assume e-/pi-
         particles.emplace_back((ParticleMap::mapped_type*)p);
       }
       fill("MCParticles",manipulator->vec_type,&particles);

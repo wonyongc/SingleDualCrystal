@@ -26,24 +26,36 @@ IF(NOT TARGET DD4hep::DDCore)
 ENDIF()
 
 dd4hep_set_compiler_flags()
+
+
 #
 #==========================================================================
 # CLHEP dependent stuff
+
+
 if(NOT TARGET CLHEP::CLHEP)
   # ensure we only look for CLHEP once
   find_package(CLHEP QUIET)
 endif()
+
 if (TARGET CLHEP::CLHEP)
   dd4hep_print("|++> CLHEP PRESENT. Building SingleDualCrystal examples.")
 else()
   dd4hep_print("|++> CLHEP is not present. NOT building SingleDualCrystal examples.")
   return()
 endif()
+
+
 #==========================================================================
+
+
 if(NOT TARGET Geant4::Interface)
   dd4hep_print("Not creating SingleDualCrystal tests [No Geant4 found]")
   return()
 endif()
+
+
+
 
 if (DD4HEP_USE_GEANT4)
   #---------------------------  Plugin library for the simulation framework  ---------
@@ -79,11 +91,21 @@ dd4hep_configure_output ()
 # If need arises, this can be changed easily.
 #
 #---SingleDualCrystal plugin library -------------------------------------------------------
-dd4hep_add_plugin ( SingleDualCrystal
-    GENERATED G__SingleDualCrystal.cxx 
+
+
+dd4hep_add_plugin (
+  SingleDualCrystal
+  GENERATED G__SingleDualCrystal.cxx 
   SOURCES src/*.cpp src/plugins/*.cpp
-  USES    DD4hep::DDCore DD4hep::DDAlign DD4hep::DDCond DD4hep::DDG4 
-          ROOT::Core ROOT::Geom ROOT::GenVector CLHEP::CLHEP Geant4::Interface
+  USES    DD4hep::DDCore 
+          DD4hep::DDAlign 
+          DD4hep::DDCond 
+          DD4hep::DDG4 
+          ROOT::Core 
+          ROOT::Geom 
+          ROOT::GenVector 
+          CLHEP::CLHEP 
+          Geant4::Interface
 )
 
 
